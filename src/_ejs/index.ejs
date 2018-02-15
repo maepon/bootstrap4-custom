@@ -1,0 +1,23 @@
+<%
+var absolutePath = filename.split(devdir)[filename.split(devdir).length -1].replace('.ejs','.html');
+var relativePath = '../'.repeat([absolutePath.split('/').length -1]);
+var pageData = {
+	absolutePath: absolutePath,
+	relativePath: relativePath
+};
+-%><!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="UTF-8">
+	<title>Test</title>
+</head>
+<body>
+
+<%- include(pageData.relativePath + '_partials/_footscripts.ejs') %>
+
+
+<script>
+	$('body').append('test2')
+</script>
+</body>
+</html>
