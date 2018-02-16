@@ -16,8 +16,8 @@ const rename = require('gulp-rename')
 const ejs = require('gulp-ejs')
 
 const SRC = {
-  css: 'src/assets/_scss/**/*.scss',
-  cssDir: 'src/assets/_scss/',
+  css: 'src/_scss/**/*.scss',
+  cssDir: 'src/_scss/',
   ejs: [
     'src/_ejs/**/*.ejs',
     '!src/_ejs/**/_*.ejs'
