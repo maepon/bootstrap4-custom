@@ -111,5 +111,5 @@ gulp.task('default', () => {
 })
 
 gulp.task('release', () => {
-  gulp.start(['cssrelease'])
+  gulp.start(['cssrelease','ejs'])
 })

@@ -5,12 +5,13 @@
   "license": "MIT",
   "scripts": {
     "gulp": "gulp default",
-    "webpack": "webpack --watch",
+    "webpack": "webpack --watch --env.mode=DEV",
     "server": "browser-sync start --server htdocs --files 'htdocs' --no-ui --reload-debounce 1000",
     "watch": "npm-run-all --parallel webpack gulp server",
     "start": "npm-run-all watch",
     "release": "npm-run-all --parallel release:*",
-    "release:gulp": "gulp release"
+    "release:gulp": "gulp release",
+    "release:webpack": "webpack --env.mode=RELEASE"
   },
   "devDependencies": {
     "autoprefixer": "^7.2.5",

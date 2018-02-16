@@ -1,38 +1,45 @@
 const webpack = require("webpack")
 
-module.exports = {
-  entry: './src/_javascript/common.js',
-  output: {
-    path: `${__dirname}/htdocs/assets/js`,
-    filename: 'common.js'
-  },
+module.exports = env =>{
+  const DEBUG = env.mode === 'DEV'
+  return {
+      entry: './src/_javascript/common.js',
 
-  externals: [
-    {
-      jquery: 'jQuery'
-    }
-  ],
+      output: {
+          path: `${__dirname}/htdocs/assets/js`,
+          filename: 'common.js'
+      },
 
-  plugins: [
-    new webpack.optimize.UglifyJsPlugin()
-  ],
+      devtool: DEBUG ? 'cheap-module-eval-source-map' : false,
 
-  module:{
-    rules: [
-      {
-        test: /\.js$/,
-        use: [
+      externals: [
           {
-            loader: 'babel-loader',
-            options: {
-              presets: [
-                ['env',{modules: false}]
-              ]
-            }
+              jquery: 'jQuery'
           }
-        ],
-        exclude: /node_modules/
+      ],
+
+      plugins: [
+          new webpack.optimize.UglifyJsPlugin()
+      ],
+
+      module:{
+          rules: [
+              {
+                  test: /\.js$/,
+                  use: [
+                      {
+                          loader: 'babel-loader',
+                          options: {
+                              presets: [
+                                  ['env',{modules: false}]
+                              ]
+                          }
+                      }
+                  ],
+                  exclude: /node_modules/
+              }
+          ]
       }
-    ]
   }
+
 }
